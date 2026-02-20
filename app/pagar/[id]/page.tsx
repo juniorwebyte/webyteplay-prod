@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useParams, useSearchParams } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -16,7 +16,7 @@ function formatarMoeda(v: number) {
   return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(v)
 }
 
-export default function PagarPage() {
+function PagarContent() {
   const params = useParams()
   const searchParams = useSearchParams()
   const id = params.id as string
@@ -206,5 +206,13 @@ export default function PagarPage() {
         ) : null}
       </div>
     </div>
+  )
+}
+
+export default function PagarPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><Loader2 className="animate-spin" /></div>}>
+      <PagarContent />
+    </Suspense>
   )
 }

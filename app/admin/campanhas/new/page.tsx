@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -29,7 +29,7 @@ interface Desconto {
   valorDesconto: string
 }
 
-export default function NovaCampanhaPage() {
+function NovaCampanhaContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const editId = searchParams.get("edit")
@@ -2190,5 +2190,13 @@ export default function NovaCampanhaPage() {
         )}
       </div>
     </AdminLayout>
+  )
+}
+
+export default function NovaCampanhaPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><Loader2 className="animate-spin" /></div>}>
+      <NovaCampanhaContent />
+    </Suspense>
   )
 }

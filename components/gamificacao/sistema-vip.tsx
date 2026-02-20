@@ -9,7 +9,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Crown, Star, Gift, Zap, Lock, Check, ChevronRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { getPontosUsuario } from "@/lib/loja-store"
-import { buscarClientePorCpf, isClienteVIP } from "@/lib/gateway-store"
+import { buscarClientePorCpf } from "@/lib/gateway-store"
+import { isClienteVIP } from "@/lib/clientes-loja-store"
 import { listarCampanhas } from "@/lib/marketing-loja-store"
 
 const NIVEIS_VIP = [
