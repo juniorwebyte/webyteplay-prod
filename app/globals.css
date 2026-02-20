@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 142.1 76.2% 36.3%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 100% 50%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 270 76% 53%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142.1 76.2% 36.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 142.1 70.6% 45.3%;
+    --primary-foreground: 144.9 80.4% 10%;
+    --secondary: 240 100% 50%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 270 76% 53%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 142.1 76.2% 36.3%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Animações de partículas */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow-text {
+  0%,
+  100% {
+    text-shadow: 0 0 10px rgba(156, 39, 176, 0.8), 0 0 20px rgba(156, 39, 176, 0.8);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(156, 39, 176, 0.8), 0 0 40px rgba(156, 39, 176, 0.8);
+  }
+}
+
+@keyframes glow-link {
+  0%,
+  100% {
+    color: #00ff00;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.8);
+  }
+  50% {
+    color: #9c27b0;
+    text-shadow: 0 0 20px rgba(156, 39, 176, 0.8), 0 0 40px rgba(156, 39, 176, 0.8);
+  }
+}
+
+@keyframes move-stars {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@keyframes move-twinkling {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@keyframes move-clouds {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+
+.animated-text {
+  animation: glow-text 2s ease-in-out infinite;
+}
+
+.developer-link {
+  color: #00ff00;
+  text-decoration: none;
+  font-weight: bold;
+  animation: glow-link 2s ease-in-out infinite;
+  transition: color 0.3s ease;
+}
+
+.developer-link:hover {
+  color: #9c27b0;
+  animation: none;
+}
+
+.galaxy-footer {
+  position: relative;
+  background: radial-gradient(circle, #000428, #1a1a2e, #4a148c);
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.stars,
+.twinkling,
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.stars {
+  background: url("/images/stars.png") repeat top center;
+  animation: move-stars 200s linear infinite;
+}
+
+.twinkling {
+  background: transparent url("/images/twinkling.png") repeat top center;
+  animation: move-twinkling 200s linear infinite;
+}
+
+.clouds {
+  background: transparent url("/images/clouds.png") repeat top center;
+  opacity: 0.4;
+  animation: move-clouds 200s linear infinite;
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #9c27b0;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #9c27b0, 0 0 20px #9c27b0;
+  animation: float 6s ease-in-out infinite;
+}
+
+.particle.green {
+  background: #00ff00;
+  box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 3;
+}
+
+.glow {
+  text-shadow: 0 0 10px rgba(156, 39, 176, 0.8), 0 0 20px rgba(156, 39, 176, 0.8);
+}
